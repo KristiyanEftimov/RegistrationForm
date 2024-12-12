@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="/frontend/CSS/Register.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.19.5/jquery.validate.min.js"></script>
+    <script src="/frontend/JS/Register.js" defer></script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="LandingPage.html">Home</a></li>
+            <li><a href="Login.html">Log in</a></li>
+        </ul>
+    </nav>
+
+<div class="form-container">
+    <h2>Register</h2>
+    <form id="registerForm">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+
+        
+        <div class="captcha-container">
+            <span id="captcha"></span>
+            <input type="text" id="captchaInput" name="captchaInput" placeholder="Enter captcha" required>
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+</body>
+</html>
