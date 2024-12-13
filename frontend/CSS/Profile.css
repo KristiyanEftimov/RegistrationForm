@@ -9,7 +9,7 @@ body {
     height: 100vh;
 }
 
-.form-container {
+.profile-container {
     background: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -17,35 +17,12 @@ body {
     width: 100%;
     max-width: 400px;
     text-align: center;
+    margin-bottom: 600px;
 }
 
 h2 {
     margin-bottom: 20px;
     color: #333;
-}
-
-form input[type="email"],
-form input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-form button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-form button:hover {
-    background: #0056b3;
 }
 
 nav {

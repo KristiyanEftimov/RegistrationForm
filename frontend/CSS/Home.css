@@ -6,7 +6,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #f4f4f4;
+    background-color: #f4f7fa;
 }
 
 nav {
@@ -49,6 +49,7 @@ nav ul li a {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-bottom: 300px;
 }
 
 .register-button:hover {

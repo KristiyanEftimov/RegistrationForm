@@ -7,8 +7,16 @@ $(document).ready(function () {
         return num1 + num2;
     }
 
-    // Store the correct captcha answer
-    let correctCaptcha = generateCaptcha();
+    let correctCaptcha = generateCaptcha(); // Store the correct captcha
+
+    // Custom validator for captcha
+    $.validator.addMethod(
+        "correctCaptcha",
+        function (value, element) {
+            return parseInt(value) === correctCaptcha;
+        },
+        "Incorrect captcha, please try again"
+    );
 
     // Validate the form
     $('#registerForm').validate({
@@ -24,9 +32,7 @@ $(document).ready(function () {
             },
             captchaInput: {
                 required: true,
-                equalTo: function () {
-                    return correctCaptcha.toString();
-                }
+                correctCaptcha: true
             }
         },
         messages: {
@@ -40,14 +46,32 @@ $(document).ready(function () {
                 minlength: "Your password must be at least 6 characters long"
             },
             captchaInput: {
-                required: "Please solve the captcha",
-                equalTo: "Incorrect captcha, please try again"
+                required: "Please solve the captcha"
             }
         },
-        submitHandler: function (form) {
-            alert("Registration successful!");
-            form.reset();
-            correctCaptcha = generateCaptcha(); 
+        submitHandler: async function (form) {
+            const name = $('input[name="name"]').val();
+            const email = $('input[name="email"]').val();
+            const password = $('input[name="password"]').val();
+
+            try {
+                const response = await fetch('http://localhost:8000/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, password }),
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    alert(result.message); 
+                    form.reset();
+                    correctCaptcha = generateCaptcha(); 
+                } else {
+                    alert(`Error: ${result.message}`); 
+                }
+            } catch (error) {
+                alert("An error occurred while submitting your registration. Please try again.");
+            }
         }
     });
 });
